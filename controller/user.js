@@ -119,6 +119,10 @@ async function handleDeleteUser(req, res) {
     const currentUser = req.userData;
     const { id } = req.query;
 
+    const userToDelete = await userModel.findById(id);
+    
+    console.log("hello world")
+
     if (!userToDelete) {
       return res.status(404).json({ error: "User not found" });
     }
