@@ -118,10 +118,6 @@ async function handleDeleteUser(req, res) {
 
     const currentUser = req.userData;
     const { id } = req.query;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ error: "Invalid user ID" });
-    }
-    const userToDelete = await userModel.findById(id);
 
     if (!userToDelete) {
       return res.status(404).json({ error: "User not found" });
